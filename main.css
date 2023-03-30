@@ -1,0 +1,365 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+* {
+    margin: 0;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lobster";
+}
+
+.birthday {
+    box-sizing: border-box;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    opacity: 0;
+    animation: appear 1.5s 4.5s forwards;
+}
+
+@keyframes appear {
+    100% {
+        opacity: 1;
+    }
+}
+
+h1 {
+    text-align: center;
+    color: #f0455e;
+    font-size: 32px;
+    padding: 10px 0;
+}
+
+.avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 6px solid #ed677b; 
+    background-image: url(pntn.jpg);
+    background-size: 100%;
+    background-position: center;
+}
+
+.merrywrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.merrywrap:hover {
+    cursor: pointer;
+}
+
+.giftbox {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    z-index: 10;
+}
+
+.giftbox>div {
+    background: #d44;
+    position: absolute;
+}
+
+.giftbox>div::after,
+.giftbox>div::before {
+    position: absolute;
+    content: "";
+    top: 0;
+}
+
+.giftbox::after {
+    position: absolute;
+    color: #fff;
+    width: 100%;
+    content: "Click Me!";
+    left: 0;
+    bottom: 0;
+    font-size: 50px;
+    text-align: center;
+    transform: rotate(-20deg);
+    transform-origin: 0 0;
+
+}
+
+.giftbox .cover {
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 25%;
+    z-index: 2;
+}
+
+.giftbox .cover::before {
+    position: absolute;
+    height: 100%;
+    left: 50%;
+    width: 50px;
+    transform: translateX(-50%);
+    background: #fdc56d;
+}
+
+.giftbox .cover>div {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+}
+
+.giftbox .cover>div::before,
+.giftbox .cover>div::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    box-shadow: inset 0 0 0 15px #fdc56d;
+    border-radius: 30px;
+    transform-origin: 50% 100%;
+}
+
+.giftbox .cover>div::before {
+    transform: translateX(-45%) skewY(40deg);
+}
+
+.giftbox .cover>div::after {
+    transform: translateX(45%) skewY(-40deg);
+}
+
+.giftbox .box {
+    right: 5%;
+    left: 5%;
+    height: 80%;
+    bottom: 0;
+}
+
+.giftbox .box::before {
+    width: 50px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fdc56d;
+}
+
+.giftbox .box::after {
+    width: 100%;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.step-1 .giftbox {
+    animation: wobble 0.5s linear infinite forwards;
+}
+
+.step-1 .cover {
+    animation: wobble 0.5s linear infinite 0.1s forwards;
+}
+
+.step-2 .giftbox:after {
+    opacity: 0;
+}
+
+.step-3 .giftbox,
+.step-4 .giftbox {
+    opacity: 0;
+    z-index: 1;
+}
+
+.step-3 .giftbox::after,
+.step-4 .giftbox::after {
+    opacity: 0;
+}
+
+.step-2 .giftbox .cover {
+    animation: flyUp 0.4s ease-in forwards;
+}
+
+.step-2 .giftbox .box {
+    animation: flyDown 0.2s ease-in 0.05s forwards;
+}
+
+@keyframes wobble {
+    25% {
+        transform: rotate(4deg);
+    }
+
+    75% {
+        transform: rotate(-2deg);
+    }
+}
+
+@keyframes flyUp {
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-1000px) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+@keyframes flyDown {
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+.cake {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: up 1s forwards;
+}
+
+@keyframes up {
+    from {
+        transform: translateY(-100vh);
+    }
+
+    to {
+        transform: translateY(345px);
+        opacity: 1;
+    }
+}
+
+.top-layer,
+.middle-layer,
+.bottom-layer {
+    height: 80px;
+    width: 240px;
+    top: 160px;
+    position: absolute;
+    background-repeat: repeat;
+    background-size: 100% 100%, 60px 100px;
+    background-position: 28px 0;
+    background-image: linear-gradient(transparent 50px, #f0746c 50px, #f0746c 60px, transparent 60px), radial-gradient(circle at 30px 5px, #f0756c 30px, #fae9b6 31px);
+}
+
+.middle-layer {
+    transform: scale(0.85);
+    animation: rise-1 1s 1s forwards;
+}
+
+@keyframes rise-1 {
+    100% {
+        top: 86px;
+    }
+}
+
+.top-layer {
+    transform: scale(0.7);
+    animation: rise-2 1.5s 1.5s forwards;
+}
+
+@keyframes rise-2 {
+    100% {
+        top: 24px;
+    }
+}
+
+.candle {
+    background: repeating-linear-gradient(45deg, #fd5918 0, #fd5d18 5px, #f9ebda 5px, #faf0e1 10px);
+    height: 45px;
+    width: 15px;
+    top: 190px;
+    position: absolute;
+    animation: rise-3 1s 2.5s forwards;
+}
+
+@keyframes rise-3 {
+    100% {
+        top: -9px;
+    }
+}
+
+.candle::after {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    background-color: #ffee54;
+    border-radius: 0 50% 50% 50%;
+    transform: scale(0) rotate(45deg);
+    bottom: 50px;
+    animation: flame 1.5s 3.5s forwards;
+}
+
+@keyframes flame {
+    100% {
+        transform: scale(1) rotate(45deg);
+    }
+}
+
+#balloon-container {
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    transition: opacity 500ms;
+    z-index: -1;
+}
+
+.balloon {
+    height: 125px;
+    width: 105px;
+    border-radius: 75% 75% 70% 70%;
+    position: relative;
+}
+
+.balloon::after {
+    content: "▲";
+    text-align: center;
+    display: block;
+    position: absolute;
+    color: inherit;
+    top: 120px;
+    left: 0;
+    right: 0;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-300vh);
+        opacity: 0;
+    }
+}
